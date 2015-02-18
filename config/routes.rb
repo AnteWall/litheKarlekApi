@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   scope 'api' do
     get 'ping' => 'ping#ping'
     get 'secured/ping' => 'secured_ping#ping'
-    get 'users/me' => 'user#me'
+    get 'users/me' => 'users#me'
+    post 'users/update' => 'users#update'
     get 'education/all' => 'education#all'
     resources :users, :only => [:show,:update]
   end
