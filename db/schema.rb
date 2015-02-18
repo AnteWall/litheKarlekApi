@@ -11,15 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150218142734) do
+ActiveRecord::Schema.define(version: 20150218192736) do
+
+  create_table "educations", force: true do |t|
+    t.string   "name"
+    t.string   "image_path"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "user_token"
-    t.text     "description", limit: 255
-    t.string   "education"
+    t.text     "description",  limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.integer  "education_id"
   end
 
 end
