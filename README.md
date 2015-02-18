@@ -1,0 +1,2 @@
+# litheKarlekApi
+Api for LiTHeKärlek
