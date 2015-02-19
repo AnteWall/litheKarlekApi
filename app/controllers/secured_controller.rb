@@ -8,13 +8,14 @@ class SecuredController < ApplicationController
   def validate_token
     begin
       authorization = request.headers['Authorization']
+      puts "A"*100
+      puts authorization.inspect
       raise InvalidTokenError if authorization.nil?
 
       token = request.headers['Authorization'].split(' ').last
       decoded_token = JWT.decode(token, 
         JWT.base64url_decode(Rails.application.secrets.auth0_client_secret))
       raise InvalidTokenError if Rails.application.secrets.auth0_client_id != decoded_token[0]["aud"]
-      puts decoded_token.inspect
       session[:user_id] = decoded_token[0]["sub"]
     rescue JWT::DecodeError, InvalidTokenError
       render text: "Unauthorized", status: :unauthorized

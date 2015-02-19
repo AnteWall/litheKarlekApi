@@ -1,10 +1,10 @@
 class UsersController < SecuredController
   def show
-    render json: User.find(params[:id])
+    render json: User.find(params[:id]).as_json(request_uri())
   end
 
   def me
-    render json: current_user
+    render json: current_user.as_json(request.original_url)
   end
 
   def update
