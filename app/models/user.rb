@@ -4,10 +4,8 @@ class User < ActiveRecord::Base
  
   def images_url
     arr = []
-    #base = "http://localhost:3000"
-    base = "http://192.168.1.102:3000"
     self.images.each do |img|
-      arr.append(base + img.file.url)
+      arr.append(img.get_url)
     end
     return arr
   end

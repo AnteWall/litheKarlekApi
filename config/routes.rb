@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     get 'users/me' => 'users#me'
     post 'users/update' => 'users#update'
     post 'image/new' => 'image#new'
+    get 'images/me' => 'image#me'
+    get 'image/:id/delete' => 'image#delete'
     get 'education/all' => 'education#all'
     resources :users, :only => [:show,:update]
   end
