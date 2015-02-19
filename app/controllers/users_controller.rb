@@ -8,11 +8,10 @@ class UsersController < SecuredController
   end
 
   def update
-    puts params
     edu = Education.find(params[:education][:id])
-    puts current_user
     current_user.education = edu 
     current_user.description = params[:description]
+    current_user.name = params[:name]
     if current_user.save
       render json: {success: true} and return
     else
