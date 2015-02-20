@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150220101952) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "educations", force: true do |t|
     t.string   "name"
     t.string   "image_path"
@@ -32,13 +35,13 @@ ActiveRecord::Schema.define(version: 20150220101952) do
 
   create_table "users", force: true do |t|
     t.string   "user_token"
-    t.text     "description",    limit: 255
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
     t.integer  "education_id"
-    t.boolean  "frozen_account",             default: false
-    t.string   "gender",                     default: "Man"
+    t.boolean  "frozen_account", default: false
+    t.string   "gender",         default: "Man"
   end
 
 end
