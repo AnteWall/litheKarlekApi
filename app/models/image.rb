@@ -6,6 +6,9 @@ class Image < ActiveRecord::Base
   def get_url
     #base = "http://192.168.1.102:3000"
     base = "http://localhost:3000"
+    if Rails.env.production?
+      base = "http://lithekarlek-dev.herokuapp.com"
+    end
     base + self.file.url
   end
 
