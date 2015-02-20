@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get 'secured/ping' => 'secured_ping#ping'
     get 'users/me' => 'users#me'
     post 'users/update' => 'users#update'
+    post 'users/settings/update' => 'users#update_settings'
     post 'image/new' => 'image#new'
     get 'images/me' => 'image#me'
     get 'image/:id/delete' => 'image#delete'

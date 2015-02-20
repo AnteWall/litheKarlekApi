@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150220101952) do
+ActiveRecord::Schema.define(version: 20150220131527) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20150220101952) do
     t.integer  "education_id"
     t.boolean  "frozen_account", default: false
     t.string   "gender",         default: "Man"
+    t.text     "view_for",       default: [],    array: true
   end
 
 end

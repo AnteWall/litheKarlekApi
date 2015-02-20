@@ -6,6 +6,23 @@ class UsersController < SecuredController
   def me
     render json: current_user
   end
+  
+  def update_settings
+    vf = []
+    params[:lookingFor].each do | lf |
+      if lf["isChecked"] == true
+        vf.append(lf['name']) 
+      end 
+    end
+    current_user.view_for = vf
+    current_user.frozen_account = params[:frozen]
+
+    if current_user.save
+      render json: {success: true} and return
+    else
+      render json: {success: false} and return
+    end
+  end
 
   def update
     edu = Education.find(params[:education][:id])
