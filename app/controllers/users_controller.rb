@@ -4,7 +4,7 @@ class UsersController < SecuredController
   end
 
   def me
-    render json: current_user.as_json(request.original_url)
+    render json: current_user
   end
 
   def update

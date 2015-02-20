@@ -11,6 +11,6 @@ class User < ActiveRecord::Base
   end
 
   def as_json(req,options={})
-    super(:include => [:education], :methods => :images_url)
+    super(:exclude => [:frozen,:user_token],:include => [:education], :methods => :images_url)
   end
 end
