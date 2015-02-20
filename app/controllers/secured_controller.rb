@@ -8,8 +8,6 @@ class SecuredController < ApplicationController
   def validate_token
     begin
       authorization = request.headers['Authorization']
-      puts "A"*100
-      puts authorization.inspect
       raise InvalidTokenError if authorization.nil?
 
       token = request.headers['Authorization'].split(' ').last
