@@ -4,8 +4,8 @@ class Image < ActiveRecord::Base
   belongs_to :user
 
   def get_url
-    base = "http://192.168.1.102:3000"
-    #base = "http://localhost:3000"
+    #base = "http://192.168.1.102:3000"
+    base = "http://localhost:3000"
     base + self.file.url
   end
 
