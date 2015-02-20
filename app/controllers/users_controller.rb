@@ -10,6 +10,7 @@ class UsersController < SecuredController
   def update
     edu = Education.find(params[:education][:id])
     current_user.education = edu 
+    current_user.gender = params[:gender]
     current_user.description = params[:description]
     current_user.name = params[:name]
     if current_user.save
