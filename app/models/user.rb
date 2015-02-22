@@ -1,7 +1,12 @@
 class User < ActiveRecord::Base
   has_many :images
   belongs_to :education
- 
+  scope :all_except, ->(user) { where.not(id: user) }
+  scope :not_frozen, -> () { where(:frozen_account => false) }
+  def find_matches
+    User.where(:gender => self.view_for).all_except(self).not_frozen.limit(10)
+  end
+
   def images_url
     arr = []
     self.images.each do |img|

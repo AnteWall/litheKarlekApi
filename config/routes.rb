@@ -16,5 +16,7 @@ Rails.application.routes.draw do
     get 'image/:id/delete' => 'image#delete'
     get 'education/all' => 'education#all'
     resources :users, :only => [:show,:update]
+
+    get 'matches/find' => 'match#matches'
   end
 end
