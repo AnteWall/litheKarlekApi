@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  root 'ping#ping'
   get 'image/new'
 
   get 'image/update'
