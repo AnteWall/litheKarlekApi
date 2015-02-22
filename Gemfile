@@ -51,3 +51,5 @@ gem 'pry', group: [:development, :test]
 gem 'rack-cors', :require => 'rack/cors'
 gem 'rails_admin'
 gem 'paperclip'
+
+gem 'rails_12factor', :group => [:production]
