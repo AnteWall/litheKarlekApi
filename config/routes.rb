@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
   root 'ping#ping'
-  get 'image/new'
-
-  get 'image/update'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
   scope 'api' do
     get 'ping' => 'ping#ping'
     get 'secured/ping' => 'secured_ping#ping'
@@ -19,4 +17,5 @@ Rails.application.routes.draw do
 
     get 'matches/find' => 'match#matches'
   end
+
 end
