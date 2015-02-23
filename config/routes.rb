@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     resources :users, :only => [:show,:update]
 
     get 'matches/find' => 'match#matches'
+
+    post 'report' => 'report#report'
   end
 
 end

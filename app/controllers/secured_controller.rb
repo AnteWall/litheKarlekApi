@@ -11,10 +11,6 @@ class SecuredController < ApplicationController
       raise InvalidTokenError if authorization.nil?
 
       token = request.headers['Authorization'].split(' ').last
-      puts "*" * 100
-      puts token.inspect
-      puts "¤" * 100
-      puts Rails.application.secrets.auth0_client_secret.inspect
       decoded_token = JWT.decode(token, 
         JWT.base64url_decode(Rails.application.secrets.auth0_client_secret))
       raise InvalidTokenError if Rails.application.secrets.auth0_client_id != decoded_token[0]["aud"]
