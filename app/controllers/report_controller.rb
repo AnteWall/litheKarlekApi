@@ -1,8 +1,9 @@
 class ReportController < SecuredController
 
   def report
-    puts params
-    Report.where(user: current_user,matched_user_id: params[:matched], liked: params[:liked]).first_or_create
+    matched = User.find(params[:matched])
+    Report.where(user: current_user,matched_user_id: matched, liked: params[:liked]).first_or_create
+    Match.check_match(current_user,matched)
     render json: {success: true }
   end
 

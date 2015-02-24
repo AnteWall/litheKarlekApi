@@ -15,8 +15,8 @@ Rails.application.routes.draw do
     get 'education/all' => 'education#all'
     resources :users, :only => [:show,:update]
 
-    get 'matches/find' => 'match#matches'
-
+    get 'matches/find' => 'match#find'
+    get 'matches' => 'match#matches'
     post 'report' => 'report#report'
   end
 

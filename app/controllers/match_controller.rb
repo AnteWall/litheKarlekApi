@@ -1,16 +1,11 @@
 class MatchController < SecuredController
 
-  def matches
+  def find
     #render json: current_user.find_matches
     render json: User.find(1).find_matches
   end
-
-  def like
-
+  
+  def matches
+    render json: current_user.matches
   end
-
-  def dislike
-
-  end
-
 end
