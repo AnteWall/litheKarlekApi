@@ -10,8 +10,10 @@ class Match < ActiveRecord::Base
       report_2 = Report.where(:user => user_2, matched_user: user_1, liked: true).first
       unless report_2.nil?
         Match.create(:user_1 => user_1, user_2: user_2)
+        return true
       end
     end
+    return false
   end
 
   def as_json(options={})
