@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
     get 'matches/find' => 'match#find'
     get 'matches' => 'match#matches'
+    get 'matches/:id/messages' => 'match#messages'
+    post 'message' => 'message#new'
     post 'report' => 'report#report'
   end
 

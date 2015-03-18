@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_many :images
   has_many :matches_u1, class_name: 'Match', foreign_key: 'user_1_id'
   has_many :matches_u2, class_name: 'Match', foreign_key: 'user_2_id'
+  has_many :message
   has_many :reports
   belongs_to :education
   scope :all_except, ->(user) { where.not(id: user) }
@@ -10,9 +11,9 @@ class User < ActiveRecord::Base
     where.not(:id => Report.where(user: current_user).select('matched_user_id').map(&:matched_user_id))
   }
   
-  def matches
+  def matches(current_user)
     arr = matches_u1 + matches_u2
-    arr = arr.sort_by { |a| a[:created_at] }.reverse
+    arr = arr.sort_by { |a| a.set_current_user(current_user); a[:created_at] }.reverse
   end
 
   def find_matches
